@@ -1,11 +1,15 @@
+/* Add Google Fonts import for Playfair Display and DM Sans as coquette alternatives */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap');
+
 /* Reset and base styles */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
   background: #f8f9fa;
   color: #222;
   line-height: 1.6;
   margin: 0;
+  font-weight: 300;
 }
 
 :root {
@@ -18,6 +22,7 @@ body {
   --pastel-accent: #e6e9e6;
   --text-main: #222;
   --text-muted: #666;
+  --accent: var(--matcha);
 }
 
 .container {
@@ -43,8 +48,11 @@ header {
   border: 3px solid #eaeaea;
 }
 .profile-info h1 {
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 400;
+  color: var(--matcha-dark);
+  letter-spacing: 0.01em;
   margin-bottom: 0.3rem;
 }
 .profile-info p {
@@ -54,13 +62,13 @@ header {
 }
 .contact-links a {
   margin-right: 1rem;
-  color: #0077b6;
+  color: var(--matcha-dark);
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.2s;
 }
 .contact-links a:hover {
-  color: #023e8a;
+  color: var(--matcha);
 }
 main {
   background: #fff;
@@ -97,10 +105,12 @@ section#contact li {
   margin-bottom: 0.5rem;
 }
 section h2 {
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
   font-size: 1.5rem;
-  color: #023e8a;
+  color: var(--matcha-dark);
   margin-bottom: 1rem;
-  border-left: 4px solid #0077b6;
+  border-left: 4px solid var(--accent);
   padding-left: 0.7rem;
 }
 footer {
@@ -151,7 +161,7 @@ footer {
 }
 .project-block h3 {
   font-size: 1.08rem;
-  color: #1a237e;
+  color: var(--matcha-dark);
   margin-bottom: 0.2rem;
   font-weight: 600;
 }
@@ -177,7 +187,7 @@ footer {
 }
 .research-block h3 {
   font-size: 1.08rem;
-  color: #006d77;
+  color: var(--matcha-dark);
   margin-bottom: 0.2rem;
   font-weight: 600;
 }
@@ -223,10 +233,12 @@ footer {
   box-shadow: 0 1px 2px rgba(0,0,0,0.01);
 }
 .industry-block h3 {
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
   font-size: 1.08rem;
-  color: #7b2ff2;
+  color: var(--matcha-dark);
   margin-bottom: 0.2rem;
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 .industry-block ul {
   margin-left: 1.2rem;
@@ -260,6 +272,9 @@ footer {
   color: #444;
   margin-bottom: 0.2rem;
 }
+.awards-block h4 {
+  color: var(--matcha-dark);
+}
 
 .skills-block {
   margin-bottom: 1.2rem;
@@ -271,7 +286,7 @@ footer {
 }
 .skills-block h4 {
   font-size: 1.05rem;
-  color: #0077b6;
+  color: var(--matcha-dark);
   margin-top: 0.7rem;
   margin-bottom: 0.3rem;
   font-weight: 600;
@@ -296,7 +311,7 @@ footer {
 }
 .interests-block h4 {
   font-size: 1.05rem;
-  color: #0077b6;
+  color: var(--matcha-dark);
   margin-top: 0.7rem;
   margin-bottom: 0.3rem;
   font-weight: 600;
@@ -318,7 +333,7 @@ footer {
   align-items: center;
   background: var(--pastel-white);
   border-bottom: 1px solid var(--pastel-accent);
-  padding: 1.2rem 2rem 1.2rem 2rem;
+  padding: 1.5rem 3rem 1.5rem 3rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -331,30 +346,46 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-basis: 33%;
+  max-width: 33%;
+  min-width: 0;
+  gap: 0.2rem;
 }
 .navbar-name {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
   color: var(--matcha-dark);
+  line-height: 1.1;
+  margin-bottom: 0;
 }
 .navbar-title {
-  font-size: 1rem;
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.95rem;
   color: var(--matcha-mid);
-  margin-top: 0.1rem;
+  margin-top: 0;
+  line-height: 1.1;
+  font-weight: 400;
+  opacity: 0.8;
 }
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  flex-basis: 67%;
+  max-width: 67%;
+  justify-content: flex-end;
+  gap: 1.2rem;
   list-style: none;
+  flex-wrap: nowrap;
 }
 .navbar-links li a {
+  display: block;
+  padding: 0.5rem 0.7rem;
   color: var(--matcha-dark);
   text-decoration: none;
-  font-size: 1.05rem;
   font-weight: 500;
-  transition: background 0.2s, color 0.2s;
   border-radius: 6px;
-  padding: 0.2rem 0.7rem;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.98rem;
 }
 .navbar-links li a:hover, .navbar-links li a.active {
   background: var(--matcha-light);
@@ -385,25 +416,32 @@ footer {
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 .about-photo {
-  flex: 0 0 220px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  margin-right: 2.2rem;
 }
 .profile-img-large {
-  width: 200px;
-  height: 200px;
-  border-radius: 12px;
+  display: block;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
   object-fit: cover;
-  border: 3px solid #eaeaea;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(116,161,46,0.08);
+  border: 1px solid var(--pastel-accent);
 }
 .about-info h1 {
-  font-size: 2.1rem;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--matcha-dark);
+  letter-spacing: 0.01em;
+  margin-bottom: 0.3rem;
 }
 .about-info h2 {
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
   font-size: 1.2rem;
   color: var(--matcha-mid);
   margin-bottom: 0.7rem;
@@ -501,5 +539,226 @@ footer {
     padding: 1rem 0.5rem;
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
+  }
+}
+
+.cv-pdf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+.cv-download-link {
+  display: inline-block;
+  background: var(--matcha-light);
+  color: var(--matcha-dark);
+  font-weight: 600;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  transition: background 0.2s, color 0.2s;
+}
+.cv-download-link:hover {
+  background: var(--matcha);
+  color: #fff;
+}
+
+.project-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.project-links a {
+  color: var(--matcha-dark);
+  text-decoration: underline;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+  opacity: 0.85;
+}
+.project-links a:hover {
+  color: var(--matcha);
+  opacity: 1;
+}
+
+.highlights-section {
+  margin-top: 2.5rem;
+  padding: 2rem 2.5rem;
+  background: var(--pastel-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.04);
+  border: 1px solid var(--pastel-accent);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.highlights-section h2 {
+  font-size: 1.4rem;
+  color: var(--matcha-dark);
+  margin-bottom: 1.2rem;
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+}
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.highlights-list li {
+  margin-bottom: 1.1rem;
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+}
+.highlights-list li:last-child {
+  margin-bottom: 0;
+}
+.highlights-list a {
+  color: var(--matcha-dark);
+  text-decoration: underline;
+  opacity: 0.85;
+  transition: color 0.2s;
+}
+.highlights-list a:hover {
+  color: var(--matcha);
+  opacity: 1;
+}
+
+.about-blurb {
+  margin: 1.3rem 0 0.7rem 0;
+  font-size: 1.08rem;
+  color: #333;
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.7;
+}
+.about-video {
+  width: 100%;
+  max-width: 600px;
+  margin: 0.5rem 0 1.5rem 0;
+}
+.about-video iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.04);
+  border: 1px solid var(--pastel-accent);
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .about-video iframe {
+    height: 200px;
+  }
+}
+
+.about-video-section {
+  margin: 2.2rem auto 0 auto;
+  padding: 2rem 0.5rem;
+  background: var(--pastel-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.04);
+  border: 1px solid var(--pastel-accent);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: none !important;
+}
+.about-video {
+  width: 100%;
+  max-width: 100%;
+  margin: 0.5rem 0 1.5rem 0;
+}
+.about-video iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.04);
+  border: 1px solid var(--pastel-accent);
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .about-video iframe {
+    height: 200px;
+  }
+}
+
+.about-video-blurb, .side-quests-title {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.about-video-blurb {
+  font-size: 1.08rem;
+  color: #333;
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+  text-align: left;
+}
+
+.side-quests-title {
+  font-size: 1.22rem;
+  color: var(--matcha-dark);
+  font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  margin-bottom: 1.1rem;
+  margin-top: 0.2rem;
+  letter-spacing: 0.01em;
+}
+
+.side-quests-title::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 4px;
+  height: 1.2em;
+  background: var(--matcha);
+  border-radius: 2px;
+  margin-right: 0.5em;
+  margin-left: 0;
+}
+
+.contact-profile-box {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  background: var(--pastel-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.04);
+  border: 1px solid var(--pastel-accent);
+  padding: 2rem 2.5rem;
+  margin: 2.5rem auto 0 auto;
+  max-width: 900px;
+}
+.contact-profile-img {
+  max-height: 180px;
+  width: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(116,161,46,0.08);
+  border: 1px solid var(--pastel-accent);
+}
+.contact-profile-blurb {
+  font-size: 1.08rem;
+  color: #333;
+  font-family: 'DM Sans', 'Playfair Display', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .contact-profile-box {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem 1rem;
+  }
+  .contact-profile-img {
+    max-width: 100%;
+    height: auto;
   }
 } 
