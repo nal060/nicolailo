@@ -87,7 +87,11 @@
     };
     (function() {
       const saved = localStorage.getItem('theme');
-      if (saved) setTheme(saved);
+      if (saved) {
+        setTheme(saved);
+      } else {
+        setTheme('dark');
+      }
     })();
   </script>
 </body>
