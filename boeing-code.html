@@ -119,6 +119,10 @@
     button { background: var(--accent); color: #fff !important; border: none; border-radius: 1.2em; padding: 0.45em 1.2em; font-size: 1em; cursor: pointer; margin-top: 0.3em; font-weight: 500; transition: background 0.2s, color 0.2s; }
     button:disabled { background: #444; color: #fff !important; cursor: not-allowed; }
     input[type=password] { color: var(--text-main) !important; background: var(--subcontainer-bg); }
+    body:not([data-theme='dark']) input[type=password] { background: #e9ecef !important; }
+    @media (prefers-color-scheme: light) {
+      input[type=password] { background: #e9ecef !important; }
+    }
     .hidden { display: none; }
     .pw-box { display: flex; flex-direction: column; align-items: center; gap: 0.5em; margin-bottom: 1.2em; }
     input[type=password] { padding: 0.45em 1em; border-radius: 8px; border: none; font-size: 1.04em; background: #292b2e; color: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08); transition: background 0.2s; }
