@@ -1218,4 +1218,30 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
     padding-right: 0.5rem !important;
     box-sizing: border-box;
   }
+  .about-section > div,
+  .about-section .item-block {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .about-section .profile-img-large {
+    max-width: 140px !important;
+    width: 60vw !important;
+    min-width: 90px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1.2rem auto;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  .about-section h1, .about-section h2 {
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    word-break: break-word;
+  }
+  .about-section h1 {
+    font-size: 1.4rem !important;
+  }
 } 
