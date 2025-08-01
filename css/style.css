@@ -1318,3 +1318,10 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
   border-color: #ff4f6d;
   box-shadow: 0 2px 8px rgba(255,79,109,0.10);
 } 
+
+@media (max-width: 700px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+} 
