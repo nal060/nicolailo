@@ -1176,3 +1176,33 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
 [data-theme="dark"] footer * {
   color: #fff !important;
 } 
+
+@media (max-width: 700px) {
+  footer .container {
+    flex-direction: column !important;
+    gap: 0.7em !important;
+    align-items: stretch !important;
+  }
+  footer .project-links,
+  footer .project-links a {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    font-size: 0.95em !important;
+    margin: 0.2em 0 !important;
+    box-sizing: border-box;
+    display: block !important;
+    text-align: center !important;
+  }
+} 
+[data-theme="dark"] .navbar-links,
+[data-theme="dark"] .navbar-links.open {
+  background: var(--container-bg) !important;
+  color: #fff !important;
+}
+[data-theme="dark"] .navbar-links li a {
+  color: #fff !important;
+}
+[data-theme="dark"] .navbar-toggle {
+  color: #fff !important;
+} 
