@@ -1,0 +1,146 @@
+[
+  {
+    "state": {
+      "value": "MICHIGAN",
+      "status": "UNCHANGED"
+    },
+    "NFDD": {
+      "value": "077 - 1",
+      "status": "UNCHANGED"
+    },
+    "date": {
+      "value": "04/23/2025",
+      "status": "UNCHANGED"
+    },
+    "location": {
+      "value": "IRONWOOD",
+      "status": "UNCHANGED"
+    },
+    "name": {
+      "value": "IRONWOOD VOR/DME",
+      "status": "UNCHANGED"
+    },
+    "airport_code": {
+      "value": "IWD",
+      "status": "UNCHANGED"
+    },
+    "latitude": {
+      "value": "46-31-56.1225 N",
+      "status": "UNCHANGED"
+    },
+    "longitude": {
+      "value": "090-07-33.0607 W",
+      "status": "UNCHANGED"
+    },
+    "NAVAID STATUS": {
+      "value": "OPERATIONAL RESTRICTED",
+      "status": "MODIFIED"
+    },
+    "VOR STANDARD SERVICE VOL": {
+      "value": "VOR LOW (VL)",
+      "status": "MODIFIED"
+    },
+    "RMK": [
+      {
+        "value": "DATA EFFECTIVE 12 JUN 2025.",
+        "status": "NOTE"
+      },
+      {
+        "value": "DME UNUSBL 010-020; 021-103 BYD 35 NM BLW 3700 FT; 104-134 BYD 25 NM BLW 5000 FT; 135-195 BYD 25 NM BLW 8000 FT; 196-244 BYD 25 NM BLW 5000 FT; 290-009 BYD 35 NM BLW 3700 FT.",
+        "status": "MODIFIED"
+      },
+      {
+        "value": "VOR UNUSBL 130-204 BYD 40 NM; 205-215 BYD 40 NM BLW 8000 FT; 205-215 BYD 46 NM; 216-230 BYD 40 NM.",
+        "status": "ADDED"
+      }
+    ]
+  },
+  {
+    "state": {
+      "value": "NEW MEXICO",
+      "status": "UNCHANGED"
+    },
+    "NFDD": {
+      "value": "077 - 2",
+      "status": "UNCHANGED"
+    },
+    "date": {
+      "value": "04/23/2025",
+      "status": "UNCHANGED"
+    },
+    "location": {
+      "value": "PINON",
+      "status": "UNCHANGED"
+    },
+    "name": {
+      "value": "PINON VOR/DME",
+      "status": "UNCHANGED"
+    },
+    "airport_code": {
+      "value": "PIO",
+      "status": "UNCHANGED"
+    },
+    "latitude": {
+      "value": "32-31-45.128 N",
+      "status": "UNCHANGED"
+    },
+    "longitude": {
+      "value": "105-18-18.867 W",
+      "status": "UNCHANGED"
+    },
+    "ELEVATION": {
+      "value": "6513",
+      "status": "MODIFIED"
+    }
+  },
+  {
+    "state": {
+      "value": "TEXAS",
+      "status": "UNCHANGED"
+    },
+    "NFDD": {
+      "value": "077 - 3",
+      "status": "UNCHANGED"
+    },
+    "date": {
+      "value": "04/23/2025",
+      "status": "UNCHANGED"
+    },
+    "location": {
+      "value": "VICTORIA",
+      "status": "UNCHANGED"
+    },
+    "name": {
+      "value": "VICTORIA VOR/DME",
+      "status": "UNCHANGED"
+    },
+    "airport_code": {
+      "value": "VCT",
+      "status": "UNCHANGED"
+    },
+    "latitude": {
+      "value": "28-54-01.1398 N",
+      "status": "MODIFIED"
+    },
+    "longitude": {
+      "value": "096-58-44.15 W",
+      "status": "MODIFIED"
+    },
+    "LAT/LONG SRCE": {
+      "value": "3RD PARTY SURVEY",
+      "status": "RECAP"
+    },
+    "ELEVATION": {
+      "value": "125.8",
+      "status": "MODIFIED"
+    },
+    "TAC DME LATITUDE": {
+      "value": "28-54-01.1398 N",
+      "status": "MODIFIED"
+    },
+    "TAC DME LONGITUDE": {
+      "value": "096-58-44.15 W",
+      "status": "MODIFIED"
+    }
+  }
+]

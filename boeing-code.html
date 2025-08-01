@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Boeing Project Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'DM Sans', Arial, sans-serif; background: #181a1b; color: #fff; margin: 0; padding: 0; font-size: 1.04em; }
+    .main-surface { max-width: 800px; margin: 2.2rem auto; padding: 0 1.5rem; }
+    .main-title { color: #fff; text-align: center; font-size: 1.55rem; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 1.2em; margin-top: 0.5em; }
+    .container { background: #292b2e; border-radius: 18px; box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 2px 8px 0 rgba(0,0,0,0.10); padding: 1.3rem 1.5rem 1.7rem 1.5rem; margin: 0 auto 2.2rem auto; max-width: 700px; transition: box-shadow 0.2s; }
+    .container:hover { box-shadow: 0 12px 40px 0 rgba(0,0,0,0.28), 0 4px 12px 0 rgba(0,0,0,0.13); }
+    .folder-name { color: #ff4f6d !important; font-weight: 700; font-size: 1.13rem; letter-spacing: 0.01em; margin-top: 0; margin-bottom: 0.7em; text-decoration: underline; }
+    .file-list { list-style: disc inside; padding-left: 1.1em; margin: 0.2em 0 0.7em 0; }
+    .file-item { margin-bottom: 0.35em; font-size: 0.98em; color: #fff; line-height: 1.5; display: flex; align-items: flex-start; gap: 0.5em; }
+    .file-name { color: #ff4f6d !important; font-weight: 500; text-decoration: none; border-radius: 4px; padding: 0.13em 0.2em; transition: color 0.13s; font-size: 1em; }
+    .file-name:hover { color: #ff4f6d !important; text-decoration: underline; background: none; }
+    .file-desc { color: #fff !important; font-size: 0.93em; margin-left: 0.3em; flex: 1 1 auto; font-style: normal; }
+    .sub-container { background: #232526; border-radius: 12px; box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18), 0 1.5px 4px 0 rgba(0,0,0,0.08); padding: 1.1rem 1.1rem 1.2rem 1.1rem; margin: 1.2em 0 0.5em 0.5em; }
+    .sub-container .folder-name { margin-top: 0; margin-bottom: 0.7em; }
+    .pw-hint { color: #fff !important; font-size: 0.93em; margin: 0.2em 0 0.1em 0; font-style: normal; letter-spacing: 0.01em; }
+    #error { color: #fff !important; text-align: center; font-size: 0.95em; margin: 0.1em 0 0 0; font-style: normal; }
+    button { background: #ff4f6d; color: #fff !important; border: none; border-radius: 1.2em; padding: 0.45em 1.2em; font-size: 1em; cursor: pointer; margin-top: 0.3em; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    button:disabled { background: #444; color: #fff !important; cursor: not-allowed; }
+    input[type=password] { color: #fff !important; background: #292b2e; }
+    .hidden { display: none; }
+    .pw-box { display: flex; flex-direction: column; align-items: center; gap: 0.5em; margin-bottom: 1.2em; }
+    input[type=password] { padding: 0.45em 1em; border-radius: 8px; border: none; font-size: 1.04em; background: #292b2e; color: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08); transition: background 0.2s; }
+    input[type=password]:disabled { background: #232526; color: #aaa; }
+    input[type=password]::placeholder { color: #bbb; font-style: italic; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center; align-items: center;
+    }
+    .modal-content { background: #232526; border-radius: 14px; padding: 1.1em 1.2em 1.3em 1.2em; max-width: 700px; width: 100%; max-height: 80vh; overflow: auto; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .close { position: absolute; top: 0.7em; right: 1em; font-size: 1.7em; color: #ff4f6d; cursor: pointer; }
+    .code-block { font-family: 'Fira Mono', 'Consolas', monospace; font-size: 0.97em; color: #fff; background: #181a1b; padding: 1em; border-radius: 8px; overflow-x: auto; white-space: pre; margin-top: 1.2em; max-height: 60vh; }
+    @media (max-width: 800px) {
+      .main-surface, .container { max-width: 98vw; padding: 1em 0.5em 1.2em 0.5em; }
+      .main-title { font-size: 1.13rem; }
+      .file-item { font-size: 0.97em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-surface">
+    <h1 class="main-title">Automated parser</h1>
+    <div class="pw-box">
+      <input type="password" id="pw" placeholder="Enter password" autocomplete="off">
+      <button id="pw-btn" onclick="checkPW()">Submit</button>
+      <p id="pw-hint" class="pw-hint">Enter the password to unlock the code viewer.</p>
+      <p id="error"></p>
+    </div>
+    <div id="code-section" class="hidden">
+      <div class="container">
+        <h2 class="folder-name">The wins</h2>
+        <ul class="file-list">
+          <li class="file-item">🚀 <span class="file-desc">Automated FAA NFDD parsing with advanced NLP & LLMs!</span></li>
+          <li class="file-item">🤖 <span class="file-desc">Achieved <b>&gt;94% accuracy</b> on complex aviation data, far surpassing the 75% production threshold.</span></li>
+          <li class="file-item">⏱️ <span class="file-desc">Saved <b>18 hours</b> of manual labor per day—yayayay!</span></li>
+          <li class="file-item">📦 <span class="file-desc">Ready for production: validated, robust, and trusted by Boeing for operational use.</span></li>
+          <li class="file-item">🧠 <span class="file-desc">Engineered a parallelized, prompt-optimized LLM pipeline for scalable, accurate parsing.</span></li>
+          <li class="file-item">📝 <span class="file-desc">Comprehensive post-processing, validation, and cross-checks ensure data integrity and reliability.</span></li>
+          <li class="file-item">🔬 <span class="file-desc">Recommended future: rule-based validation, domain fine-tuning, and more annotated data for even higher accuracy.</span></li>
+        </ul>
+      </div>
+      <div class="container">
+        <h2 class="folder-name">Project Root</h2>
+        <ul class="file-list">
+          <li class="file-item"><a href="boeing-main/README.md" class="file-name code-link">README.md</a> <span class="file-desc">Project overview and usage instructions for the Boeing NFDD Parsing Pipeline.</span></li>
+          <li class="file-item"><a href="boeing-main/requirements.txt" class="file-name code-link">requirements.txt</a> <span class="file-desc">Lists all Python dependencies needed to run the pipeline.</span></li>
+        </ul>
+      </div>
+      <div class="container">
+        <h2 class="folder-name">src/</h2>
+        <ul class="file-list">
+          <li class="file-item"><a href="boeing-main/src/section_splitter.py" class="file-name code-link">section_splitter.py</a> <span class="file-desc">Splits cleaned text files into logical NFDD sections for further processing.</span></li>
+          <li class="file-item"><a href="boeing-main/src/read_whole_pdf.py" class="file-name code-link">read_whole_pdf.py</a> <span class="file-desc">Main entry point: orchestrates PDF-to-text conversion and section splitting.</span></li>
+          <li class="file-item"><a href="boeing-main/src/process_unified_LLM.py" class="file-name code-link">process_unified_LLM.py</a> <span class="file-desc">Runs LLM-based parsing on each section, producing structured JSON outputs.</span></li>
+          <li class="file-item"><a href="boeing-main/src/pdf_miner_grouper.py" class="file-name code-link">pdf_miner_grouper.py</a> <span class="file-desc">Extracts tabular text from PDFs using pdfminer, preserving layout.</span></li>
+          <li class="file-item"><a href="boeing-main/src/llm_open_pipeline.py" class="file-name code-link">llm_open_pipeline.py</a> <span class="file-desc">Handles LLM-based section processing and output file management.</span></li>
+          <li class="file-item"><a href="boeing-main/src/2099_cycle_dates.xlsx" class="file-name">2099_cycle_dates.xlsx</a> <span class="file-desc">Excel file containing cycle dates for reference (not code).</span></li>
+        </ul>
+        <div class="sub-container">
+          <h3 class="folder-name">special_utilities/</h3>
+          <ul class="file-list">
+            <li class="file-item"><a href="boeing-main/src/special_utilities/run_tests.py" class="file-name code-link">run_tests.py</a> <span class="file-desc">Runs all test evaluations and prints a summary of results.</span></li>
+            <li class="file-item"><a href="boeing-main/src/special_utilities/test_evaluator.py" class="file-name code-link">test_evaluator.py</a> <span class="file-desc">Compares parsed outputs to golden data and computes accuracy.</span></li>
+            <li class="file-item"><a href="boeing-main/src/special_utilities/extract_headers.py" class="file-name code-link">extract_headers.py</a> <span class="file-desc">Extracts and logs all unique headers from PDFs for troubleshooting.</span></li>
+            <li class="file-item"><a href="boeing-main/src/special_utilities/download_pdfs.py" class="file-name code-link">download_pdfs.py</a> <span class="file-desc">Downloads all FAA NFDD PDFs using Playwright and BeautifulSoup.</span></li>
+            <li class="file-item"><a href="boeing-main/src/special_utilities/count_files.py" class="file-name code-link">count_files.py</a> <span class="file-desc">Counts files and section headers in a folder for quick analysis.</span></li>
+          </ul>
+        </div>
+        <div class="sub-container">
+          <h3 class="folder-name">helper/</h3>
+          <ul class="file-list">
+            <li class="file-item"><a href="boeing-main/src/helper/utils.py" class="file-name code-link">utils.py</a> <span class="file-desc">A collection of utility functions for parsing, normalization, and file handling.</span></li>
+            <li class="file-item"><a href="boeing-main/src/helper/stringify_json_object.py" class="file-name code-link">stringify_json_object.py</a> <span class="file-desc">Cleans and pretty-prints stringified JSON files in a folder.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="folder-name">processed_files_in_json/</h2>
+        <ul class="file-list">
+          <li class="file-item"><a href="boeing-main/processed_files_in_json/nfdd-2025-04-23-77_SECTION_02_NAVAIDS.json" class="file-name code-link">nfdd-2025-04-23-77_SECTION_02_NAVAIDS.json</a> <span class="file-desc">Example output: structured JSON for the NAVAIDS section, as parsed by the pipeline.</span></li>
+        </ul>
+      </div>
+      <p style="color:#fff; font-size:0.98em; text-align:center; margin-top:2.5em;">Note: Click any file to preview its contents. This code is for viewing only and is password protected for privacy.</p>
+    </div>
+  </div>
+  <!-- Modal for code preview -->
+  <div id="codeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <pre id="fileContent" class="code-block">// File content will appear here</pre>
+    </div>
+  </div>
+  <script>
+    // Password logic
+    function unlockCodeSection() {
+      document.getElementById('code-section').classList.remove('hidden');
+      document.querySelector('.pw-box').style.display = 'none';
+      document.getElementById('pw').disabled = true;
+      document.getElementById('pw-btn').disabled = true;
+      document.getElementById('pw-hint').textContent = 'Unlocked!';
+      document.getElementById('pw-hint').style.color = '#7ee787';
+      document.getElementById('error').textContent = '';
+    }
+    window.checkPW = function() {
+      const pw = document.getElementById('pw').value;
+      if (pw === 'awesomesauce') {
+        unlockCodeSection();
+      } else {
+        document.getElementById('error').textContent = 'Incorrect password. Try again!';
+      }
+    };
+    document.getElementById('pw').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') window.checkPW();
+    });
+  </script>
+  <script>
+    // Modal logic
+    (function() {
+      function setupModalLinks() {
+        document.querySelectorAll('.code-link').forEach(link => {
+          link.onclick = function(e) {
+            e.preventDefault();
+            const fileUrl = this.getAttribute('href');
+            fetch(fileUrl)
+              .then(response => {
+                if (!response.ok) throw new Error('File not found or cannot be displayed.');
+                return response.text();
+              })
+              .then(text => {
+                document.getElementById('fileContent').textContent = text;
+                document.getElementById('codeModal').style.display = 'flex';
+              })
+              .catch(err => {
+                document.getElementById('fileContent').textContent = 'Unable to load file: ' + err.message;
+                document.getElementById('codeModal').style.display = 'flex';
+              });
+          };
+        });
+      }
+      setupModalLinks();
+      document.getElementById('closeModal').onclick = function() {
+        document.getElementById('codeModal').style.display = 'none';
+      };
+      window.onclick = function(event) {
+        if (event.target == document.getElementById('codeModal')) {
+          document.getElementById('codeModal').style.display = 'none';
+        }
+      };
+      // Re-setup modal links if the file list is ever dynamically updated
+      window.setupModalLinks = setupModalLinks;
+    })();
+  </script>
+</body>
+</html>
