@@ -1218,6 +1218,10 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
     padding-right: 0.5rem !important;
     box-sizing: border-box;
   }
+  .main-surface > section:first-child,
+  .about-section.cheeky-container {
+    margin-top: 1.5rem !important;
+  }
   .about-section > div,
   .about-section .item-block {
     max-width: 100% !important;
