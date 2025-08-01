@@ -110,8 +110,6 @@ section h2 {
   font-size: 1.5rem;
   color: var(--matcha-dark);
   margin-bottom: 1rem;
-  border-left: 4px solid var(--accent);
-  padding-left: 0.7rem;
 }
 footer {
   text-align: center;
@@ -430,6 +428,19 @@ footer {
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(116,161,46,0.08);
   border: 1px solid var(--pastel-accent);
+  margin-left: 0;
+  margin-top: 1.2em;
+}
+@media (max-width: 700px) {
+  .profile-img-large {
+    margin-top: 0.7em;
+  }
+}
+@media (max-width: 700px) {
+  .profile-img-large {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 .about-info h1 {
   font-family: 'Playfair Display', 'DM Sans', 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
@@ -847,5 +858,73 @@ footer {
     align-items: center;
     gap: 1.2rem;
     padding: 1.2rem 0.2rem;
+  }
+} 
+
+.main-surface {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.2rem 1.2rem 2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.main-surface > section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+section {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+section + section {
+  border-top: 1px solid #ececec;
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 700px) {
+  .main-surface {
+    padding: 1.2rem 0.5rem;
+    gap: 2.2rem;
+  }
+  .about-section div[style*="display: flex"] {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .profile-img-large {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    height: auto;
+    border-radius: 0;
+    margin: 0 auto 1.2rem auto;
+    display: block;
+  }
+} 
+
+.cheeky-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(116,161,46,0.07), 0 1.5px 4px 0 rgba(0,0,0,0.03);
+  padding: 2.2rem 2rem;
+  margin: 0 auto 2.5rem auto;
+  max-width: 700px;
+  transition: box-shadow 0.2s;
+}
+.cheeky-container:hover {
+  box-shadow: 0 8px 32px 0 rgba(116,161,46,0.13), 0 2px 8px 0 rgba(0,0,0,0.05);
+}
+.cheeky-container h2 {
+  padding-top: 0.7em;
+}
+
+@media (max-width: 700px) {
+  .cheeky-container {
+    padding: 1.2rem 0.7rem;
+    border-radius: 12px;
   }
 } 
