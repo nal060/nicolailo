@@ -1055,3 +1055,33 @@ section + section {
 .about-section h1 {
   color: #111 !important;
 } 
+
+footer .project-links {
+  margin: 0;
+  gap: 0;
+}
+footer .project-links a,
+footer .project-links {
+  background: #ff4f6d;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.45em 1.2em;
+  border-radius: 1.5em;
+  border: none;
+  text-decoration: none;
+  font-size: 0.98rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: background 0.18s, transform 0.18s;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 120px;
+  max-width: 180px;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+footer .project-links a:hover,
+footer .project-links:hover {
+  background: #e13a5c;
+  transform: translateY(-2px) scale(1.03);
+} 
