@@ -5,12 +5,73 @@
   <title>Boeing Project Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'DM Sans', Arial, sans-serif; background: #181a1b; color: #fff; margin: 0; padding: 0; font-size: 1.04em; }
+    :root {
+      --background: #f8f9fa;
+      --container-bg: #fff;
+      --subcontainer-bg: #f3f4f6;
+      --text-main: #181a1b;
+      --text-muted: #888;
+      --accent: #ff4f6d;
+      --shadow: rgba(0,0,0,0.07);
+      --shadow-strong: rgba(0,0,0,0.13);
+    }
+    [data-theme="dark"] {
+      --background: #181a1b;
+      --container-bg: #292b2e;
+      --subcontainer-bg: #232526;
+      --text-main: #fff;
+      --text-muted: #b0b0b0;
+      --accent: #ff4f6d;
+      --shadow: rgba(0,0,0,0.22);
+      --shadow-strong: rgba(0,0,0,0.28);
+    }
+    body {
+      font-family: 'DM Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-main);
+      margin: 0; padding: 0; font-size: 1.04em;
+      transition: background 0.2s, color 0.2s;
+    }
     .main-surface { max-width: 800px; margin: 2.2rem auto; padding: 0 1.5rem; }
-    .main-title { color: #fff; text-align: center; font-size: 1.55rem; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 1.2em; margin-top: 0.5em; }
-    .container { background: #292b2e; border-radius: 18px; box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 2px 8px 0 rgba(0,0,0,0.10); padding: 1.3rem 1.5rem 1.7rem 1.5rem; margin: 0 auto 2.2rem auto; max-width: 700px; transition: box-shadow 0.2s; }
-    .container:hover { box-shadow: 0 12px 40px 0 rgba(0,0,0,0.28), 0 4px 12px 0 rgba(0,0,0,0.13); }
-    .folder-name { color: #ff4f6d !important; font-weight: 700; font-size: 1.13rem; letter-spacing: 0.01em; margin-top: 0; margin-bottom: 0.7em; text-decoration: underline; }
+    .main-title-row { display: flex; align-items: center; justify-content: center; gap: 1.2em; margin-bottom: 1.2em; margin-top: 0.5em; }
+    .main-title { color: var(--text-main); text-align: center; font-size: 1.55rem; font-weight: 600; letter-spacing: 0.01em; margin: 0; line-height: 1; }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.55em;
+      cursor: pointer;
+      margin-left: 0.2em;
+      transition: color 0.2s;
+      padding: 0.1em 0.3em 0.1em 0.3em;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      height: 1.7em;
+    }
+    .theme-toggle:focus { outline: none; }
+    .theme-toggle:focus-visible { outline: 2px solid var(--accent); }
+    .container {
+      background: var(--container-bg);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 var(--shadow), 0 2px 8px 0 rgba(0,0,0,0.10);
+      padding: 1.3rem 1.5rem 1.7rem 1.5rem;
+      margin: 0 auto 2.2rem auto;
+      max-width: 700px;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+    .container:hover {
+      box-shadow: 0 12px 40px 0 var(--shadow-strong), 0 4px 12px 0 rgba(0,0,0,0.13);
+    }
+    .folder-name {
+      color: var(--accent) !important;
+      font-weight: 700;
+      font-size: 1.13rem;
+      letter-spacing: 0.01em;
+      margin-top: 0;
+      margin-bottom: 0.7em;
+      text-decoration: underline;
+    }
     .file-list {
       display: grid;
       grid-template-columns: max-content 1fr;
@@ -22,7 +83,7 @@
       display: contents;
     }
     .file-name {
-      color: #ff4f6d !important;
+      color: var(--accent) !important;
       font-weight: 500;
       text-decoration: none;
       border-radius: 4px;
@@ -33,24 +94,31 @@
       white-space: nowrap;
     }
     .file-name:hover {
-      color: #ff4f6d !important;
+      color: var(--accent) !important;
       text-decoration: underline;
       background: none;
     }
     .file-desc {
-      color: #fff !important;
+      color: var(--text-main) !important;
       font-size: 0.93em;
       font-style: normal;
       align-self: start;
       margin-left: 0;
     }
-    .sub-container { background: #232526; border-radius: 12px; box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18), 0 1.5px 4px 0 rgba(0,0,0,0.08); padding: 1.1rem 1.1rem 1.2rem 1.1rem; margin: 1.2em 0 0.5em 0.5em; }
+    .sub-container {
+      background: var(--subcontainer-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px 0 var(--shadow), 0 1.5px 4px 0 rgba(0,0,0,0.08);
+      padding: 1.1rem 1.1rem 1.2rem 1.1rem;
+      margin: 1.2em 0 0.5em 0.5em;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
     .sub-container .folder-name { margin-top: 0; margin-bottom: 0.7em; }
-    .pw-hint { color: #fff !important; font-size: 0.93em; margin: 0.2em 0 0.1em 0; font-style: normal; letter-spacing: 0.01em; }
-    #error { color: #fff !important; text-align: center; font-size: 0.95em; margin: 0.1em 0 0 0; font-style: normal; }
-    button { background: #ff4f6d; color: #fff !important; border: none; border-radius: 1.2em; padding: 0.45em 1.2em; font-size: 1em; cursor: pointer; margin-top: 0.3em; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .pw-hint { color: var(--text-main) !important; font-size: 0.93em; margin: 0.2em 0 0.1em 0; font-style: normal; letter-spacing: 0.01em; }
+    #error { color: var(--accent) !important; text-align: center; font-size: 0.95em; margin: 0.1em 0 0 0; font-style: normal; }
+    button { background: var(--accent); color: #fff !important; border: none; border-radius: 1.2em; padding: 0.45em 1.2em; font-size: 1em; cursor: pointer; margin-top: 0.3em; font-weight: 500; transition: background 0.2s, color 0.2s; }
     button:disabled { background: #444; color: #fff !important; cursor: not-allowed; }
-    input[type=password] { color: #fff !important; background: #292b2e; }
+    input[type=password] { color: var(--text-main) !important; background: var(--subcontainer-bg); }
     .hidden { display: none; }
     .pw-box { display: flex; flex-direction: column; align-items: center; gap: 0.5em; margin-bottom: 1.2em; }
     input[type=password] { padding: 0.45em 1em; border-radius: 8px; border: none; font-size: 1.04em; background: #292b2e; color: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08); transition: background 0.2s; }
@@ -76,7 +144,10 @@
 </head>
 <body>
   <div class="main-surface">
-    <h1 class="main-title">Automated parser</h1>
+    <div class="main-title-row">
+      <h1 class="main-title">Automated parser</h1>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
+    </div>
     <div class="pw-box">
       <input type="password" id="pw" placeholder="Enter password" autocomplete="off">
       <button id="pw-btn" onclick="checkPW()">Submit</button>
@@ -169,6 +240,33 @@
     document.getElementById('pw').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') window.checkPW();
     });
+  </script>
+  <script>
+    // Theme toggle logic
+    // Set theme as early as possible for password page consistency
+    (function() {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const saved = localStorage.getItem('theme');
+      const theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+      document.body.setAttribute('data-theme', theme);
+    })();
+    // Theme toggle logic
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+    function toggleTheme() {
+      const current = document.body.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    }
+    themeToggle.addEventListener('click', toggleTheme);
+    // On load, sync toggle icon
+    (function() {
+      const theme = document.body.getAttribute('data-theme');
+      themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+    })();
   </script>
   <script>
     // Modal logic
