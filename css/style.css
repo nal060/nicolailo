@@ -1206,3 +1206,16 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
 [data-theme="dark"] .navbar-toggle {
   color: #fff !important;
 } 
+
+@media (max-width: 700px) {
+  .cheeky-container,
+  .about-section.cheeky-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    box-sizing: border-box;
+  }
+} 
