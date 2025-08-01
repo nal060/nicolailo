@@ -16,12 +16,13 @@
       <span class="navbar-title">AI Researcher | Machine Learning Engineer</span>
     </a>
     <button class="navbar-toggle" aria-label="Open navigation menu"><i class="fas fa-bars"></i></button>
-    <ul class="navbar-links">
+    <ul class="navbar-links" style="margin-right:1.5em;">
       <li><a href="index.html">About</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="industry.html">Industry</a></li>
     </ul>
+    <button id="darkModeToggle" style="margin-left:1.5em; border:none; background:none; cursor:pointer; font-size:1.2em; vertical-align:middle;" aria-label="Toggle dark mode">🌙</button>
   </nav>
   <main class="main-surface">
     <section class="industry-section cheeky-container">
@@ -86,5 +87,21 @@
     </div>
   </footer>
   <script src="js/script.js"></script>
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    };
+    toggle.onclick = () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      setTheme(current);
+    };
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) setTheme(saved);
+    })();
+  </script>
 </body>
 </html> 
