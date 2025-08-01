@@ -1295,3 +1295,26 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
   font-size: 1em;
   color: #333;
 } 
+
+.video-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em 1.2em;
+  margin-bottom: 2em;
+}
+.video-filter {
+  border-radius: 1em;
+  padding: 0.5em 1.1em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.video-filter.active,
+.video-filter:focus,
+.video-filter:hover {
+  border-color: #ff4f6d;
+  box-shadow: 0 2px 8px rgba(255,79,109,0.10);
+} 
