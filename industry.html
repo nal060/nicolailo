@@ -26,7 +26,12 @@
   <main class="main-surface">
     <section class="industry-section cheeky-container">
       <h2>🏢 Industry Experience</h2>
-      <div class="item-block">
+      <div class="industry-filters" style="display:flex; flex-wrap:wrap; gap:0.6em; margin-bottom:1.2em;">
+        <button class="industry-filter active" data-filter="Everything">Everything</button>
+        <button class="industry-filter" data-filter="Machine learning">Machine learning</button>
+        <button class="industry-filter" data-filter="UX & Content">UX & Content</button>
+      </div>
+      <div class="item-block" data-tags="Machine learning Everything">
         <div class="item-header">
           <span class="item-title">Boeing, Vancouver | Machine Learning Research Engineer</span>
           <span class="item-date">2025.04 – Present</span>
@@ -41,7 +46,7 @@
           <a href="boeing-code.html" target="_blank" class="project-links">GitHub</a>
         </div>
       </div>
-      <div class="item-block">
+      <div class="item-block" data-tags="UX & Content Everything">
         <div class="item-header">
           <span class="item-title">Dexcom, San Diego | UX Content Designer, Computational Linguist</span>
           <span class="item-date">2022.09 – 2024.08</span>
@@ -53,7 +58,7 @@
           <li>Established and documented operational workflows; streamlined onboarding, feedback, and copy creation.</li>
         </ul>
       </div>
-      <div class="item-block">
+      <div class="item-block" data-tags="UX & Content Everything">
         <div class="item-header">
           <span class="item-title">NOAA - Fisheries, California | Social Media Content Strategist</span>
           <span class="item-date">2023.06 – 2024.09</span>
@@ -69,7 +74,7 @@
           <a href="https://www.instagram.com/noaafisherieswestcoast/" target="_blank">NOAA</a>
         </div>
       </div>
-      <div class="item-block">
+      <div class="item-block" data-tags="UX & Content Everything">
         <div class="item-header">
           <span class="item-title">Dovenmuehle Mortgage, San Francisco | Lead Content Designer</span>
           <span class="item-date">2021.08 – 2022.09</span>
