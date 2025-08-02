@@ -26,10 +26,10 @@
   <main class="main-surface">
     <section class="industry-section cheeky-container">
       <h2>🏢 Industry Experience</h2>
-      <div class="industry-filters" style="display:flex; flex-wrap:wrap; gap:0.6em; margin-bottom:1.2em;">
-        <button class="industry-filter active" data-filter="Everything">Everything</button>
-        <button class="industry-filter" data-filter="Machine learning">Machine learning</button>
-        <button class="industry-filter" data-filter="UX & Content">UX & Content</button>
+      <div class="video-filters">
+        <button class="video-filter active" data-filter="Everything">Everything</button>
+        <button class="video-filter" data-filter="Machine learning">Machine learning</button>
+        <button class="video-filter" data-filter="UX & Content">UX & Content</button>
       </div>
       <div class="item-block" data-tags="Machine learning Everything">
         <div class="item-header">
@@ -117,6 +117,29 @@
         setTheme('dark');
       }
     })();
+    // Industry filter logic using video-filter class
+    const industryFilters = document.querySelectorAll('.video-filter');
+    const industryBlocks = document.querySelectorAll('.industry-section .item-block');
+    industryFilters.forEach(btn => {
+      btn.addEventListener('click', function() {
+        industryFilters.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        industryBlocks.forEach(block => {
+          const tags = block.getAttribute('data-tags');
+          if (filter === 'Everything' || (tags && tags.includes(filter))) {
+            block.style.display = '';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+      });
+    });
+    // Trigger the filter for the active button on page load
+    const defaultIndustryActive = document.querySelector('.video-filter.active');
+    if (defaultIndustryActive) {
+      defaultIndustryActive.click();
+    }
   </script>
 </body>
 </html> 
