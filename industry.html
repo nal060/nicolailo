@@ -153,27 +153,35 @@
     if (defaultIndustryActive) {
       defaultIndustryActive.click();
     }
-    // Overlay reveal for mobile/tap
+    // Overlay reveal for mobile/tap and toggle on click
     (function() {
       const blocks = document.querySelectorAll('.industry-section .item-block');
       let lastRevealed = null;
       blocks.forEach(block => {
         const overlay = block.querySelector('.item-image-overlay');
-        // Click/tap support
-        overlay.addEventListener('click', function(e) {
-          if (lastRevealed && lastRevealed !== block) {
-            lastRevealed.classList.remove('revealed');
-            lastRevealed.querySelector('.item-image-overlay').setAttribute('aria-hidden', 'false');
+        // Click/tap support: toggle overlay
+        block.addEventListener('click', function(e) {
+          // If already revealed, hide overlay
+          if (block.classList.contains('revealed')) {
+            block.classList.remove('revealed');
+            overlay.setAttribute('aria-hidden', 'false');
+            lastRevealed = null;
+          } else {
+            // Hide any other revealed block
+            if (lastRevealed && lastRevealed !== block) {
+              lastRevealed.classList.remove('revealed');
+              lastRevealed.querySelector('.item-image-overlay').setAttribute('aria-hidden', 'false');
+            }
+            block.classList.add('revealed');
+            overlay.setAttribute('aria-hidden', 'true');
+            lastRevealed = block;
           }
-          block.classList.add('revealed');
-          overlay.setAttribute('aria-hidden', 'true');
-          lastRevealed = block;
           e.stopPropagation();
         });
         // Keyboard accessibility
         overlay.addEventListener('keydown', function(e) {
           if (e.key === 'Enter' || e.key === ' ') {
-            overlay.click();
+            block.click();
           }
         });
       });
