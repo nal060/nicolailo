@@ -1011,6 +1011,7 @@ section + section {
   box-shadow: 0 1px 4px var(--shadow);
   padding: 1.2em 1.2em 1.5em 1.2em;
   position: relative;
+  overflow: hidden;
   transition: box-shadow 0.18s;
 }
 .item-block:hover {
@@ -1327,4 +1328,34 @@ section, .cheeky-container, .item-block, .container, .about-section, .about-cont
   .swiper-button-prev {
     display: none !important;
   }
+} 
+
+.item-image-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.97);
+  z-index: 2;
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+[data-theme="dark"] .item-image-overlay {
+  background: rgba(30,30,30,0.97);
+}
+.item-image-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+}
+.item-block:hover .item-image-overlay,
+.item-block:focus-within .item-image-overlay,
+.item-block.revealed .item-image-overlay {
+  opacity: 0;
+  pointer-events: none;
 } 

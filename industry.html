@@ -32,6 +32,9 @@
         <button class="video-filter" data-filter="UX & Content">ux & content</button>
       </div>
       <div class="item-block" data-tags="Machine learning Everything">
+        <div class="item-image-overlay" aria-hidden="false" tabindex="0">
+          <img src="images/placeholder.jpg" alt="Industry Placeholder" />
+        </div>
         <div class="item-header">
           <span class="item-title">Boeing, Vancouver | Machine Learning Research Engineer</span>
           <span class="item-date">2025.04 – Present</span>
@@ -47,6 +50,9 @@
         </div>
       </div>
       <div class="item-block" data-tags="UX & Content Everything">
+        <div class="item-image-overlay" aria-hidden="false" tabindex="0">
+          <img src="images/placeholder.jpg" alt="Industry Placeholder" />
+        </div>
         <div class="item-header">
           <span class="item-title">Dexcom, San Diego | UX Content Designer, Computational Linguist</span>
           <span class="item-date">2022.09 – 2024.08</span>
@@ -59,6 +65,9 @@
         </ul>
       </div>
       <div class="item-block" data-tags="UX & Content Everything">
+        <div class="item-image-overlay" aria-hidden="false" tabindex="0">
+          <img src="images/placeholder.jpg" alt="Industry Placeholder" />
+        </div>
         <div class="item-header">
           <span class="item-title">NOAA - Fisheries, California | Social Media Content Strategist</span>
           <span class="item-date">2023.06 – 2024.09</span>
@@ -75,6 +84,9 @@
         </div>
       </div>
       <div class="item-block" data-tags="UX & Content Everything">
+        <div class="item-image-overlay" aria-hidden="false" tabindex="0">
+          <img src="images/placeholder.jpg" alt="Industry Placeholder" />
+        </div>
         <div class="item-header">
           <span class="item-title">Dovenmuehle Mortgage, San Francisco | Lead Content Designer</span>
           <span class="item-date">2021.08 – 2022.09</span>
@@ -141,6 +153,39 @@
     if (defaultIndustryActive) {
       defaultIndustryActive.click();
     }
+    // Overlay reveal for mobile/tap
+    (function() {
+      const blocks = document.querySelectorAll('.industry-section .item-block');
+      let lastRevealed = null;
+      blocks.forEach(block => {
+        const overlay = block.querySelector('.item-image-overlay');
+        // Click/tap support
+        overlay.addEventListener('click', function(e) {
+          if (lastRevealed && lastRevealed !== block) {
+            lastRevealed.classList.remove('revealed');
+            lastRevealed.querySelector('.item-image-overlay').setAttribute('aria-hidden', 'false');
+          }
+          block.classList.add('revealed');
+          overlay.setAttribute('aria-hidden', 'true');
+          lastRevealed = block;
+          e.stopPropagation();
+        });
+        // Keyboard accessibility
+        overlay.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            overlay.click();
+          }
+        });
+      });
+      // Click outside to reset
+      document.addEventListener('click', function(e) {
+        if (lastRevealed && !lastRevealed.contains(e.target)) {
+          lastRevealed.classList.remove('revealed');
+          lastRevealed.querySelector('.item-image-overlay').setAttribute('aria-hidden', 'false');
+          lastRevealed = null;
+        }
+      });
+    })();
   </script>
 </body>
 </html> 
