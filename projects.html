@@ -26,7 +26,15 @@
   <main class="main-surface">
     <section class="projects-section cheeky-container">
       <h2>🛠️ Projects</h2>
-      <div class="item-block">
+      <div class="video-filters">
+        <button class="video-filter active" data-filter="everything">everything</button>
+        <button class="video-filter" data-filter="startup">startup</button>
+        <button class="video-filter" data-filter="open-source">open-source</button>
+        <button class="video-filter" data-filter="ai safety">ai safety</button>
+        <button class="video-filter" data-filter="animal welfare">animal welfare</button>
+        <button class="video-filter" data-filter="content creation">content creation</button>
+      </div>
+      <div class="item-block" data-tags="open-source animal welfare everything">
         <div class="item-header">
           <span class="item-title">moo4feed, R Package Contributor | UBC, Animal Welfare Lab</span>
           <span class="item-date">2025.04 – 2025.07</span>
@@ -37,7 +45,7 @@
           <a href="https://github.com/skysheng7/moo4feed" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="item-block">
+      <div class="item-block" data-tags="open-source animal welfare everything">
         <div class="item-header">
           <span class="item-title">fwi-predict, Python Package Contributor | Fish Welfare Initiative</span>
           <span class="item-date">2025.03</span>
@@ -50,7 +58,7 @@
           <a href="https://github.com/fish-welfare-initiative/fwi-predict" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="item-block">
+      <div class="item-block" data-tags="ai safety everything">
         <div class="item-header">
           <span class="item-title">Global Risk and AI Safety Preparedness (GRASP) Contributor | Mohammed Bin Rashid School of Government & Future of Life Institute</span>
           <span class="item-date">2025.01 – 2025.02</span>
@@ -90,6 +98,29 @@
         setTheme('dark');
       }
     })();
+    // Project filter logic using video-filter class
+    const projectFilters = document.querySelectorAll('.video-filter');
+    const projectBlocks = document.querySelectorAll('.projects-section .item-block');
+    projectFilters.forEach(btn => {
+      btn.addEventListener('click', function() {
+        projectFilters.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        projectBlocks.forEach(block => {
+          const tags = block.getAttribute('data-tags');
+          if (filter === 'everything' || (tags && tags.includes(filter))) {
+            block.style.display = '';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+      });
+    });
+    // Trigger the filter for the active button on page load
+    const defaultProjectActive = document.querySelector('.video-filter.active');
+    if (defaultProjectActive) {
+      defaultProjectActive.click();
+    }
   </script>
 </body>
 </html> 
